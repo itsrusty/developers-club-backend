@@ -25,30 +25,11 @@ export const createUser = async (req, res) => {
       question_for,
     };
 
-    // & validar si es sano o no
-    let message = "";
-    let condition = false;
-
-    if (
-      dataUser.problemas == "si" ||
-      dataUser.problemas == "Si" ||
-      dataUser.actividades == "no" ||
-      dataUser.actividades == "No"
-    ) {
-      message = "problema cardiacos ó de salud detectados'";
-      condition = true;
-      console.log(condition);
-    } else {
-      message = "No, no tiene problemas cardiacos'";
-      condition = false;
-      console.log(condition);
-    }
-
     // && save data
     const savedDataUser = await userModel.create(dataUser);
-
     if (savedDataUser) {
-      res.status(200).json({ message });
+      res.status(200).json({ savedDataUser });
+      console.log("all okay")
     } else {
       res.status(204).json({ message: "Failed to save data user." });
     }
