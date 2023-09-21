@@ -10,7 +10,6 @@ export const createUser = async (req, res) => {
     question_one,
     question_two,
     question_tree,
-    question_for,
   } = req.body;
   try {
     const dataUser = {
@@ -22,7 +21,6 @@ export const createUser = async (req, res) => {
       question_one,
       question_two,
       question_tree,
-      question_for,
     };
 
     // && save data
@@ -43,6 +41,7 @@ export const showUsers = async (req, res) => {
   try {
     const data = await userModel.find();
     res.json({ message: data });
+    console.log("aqui está")
   } catch (error) {
     throw new Error(error);
   }
